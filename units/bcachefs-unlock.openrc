@@ -1,0 +1,12 @@
+#!/sbin/openrc-run
+description="Unlock encrypted bcachefs volumes"
+
+depend() {
+    before localmount
+}
+
+start() {
+    ebegin "Unlocking bcachefs volumes"
+    /usr/local/sbin/bcachefs-unlock.sh
+    eend $?
+}

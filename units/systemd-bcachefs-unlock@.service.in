@@ -1,0 +1,12 @@
+[Unit]
+Description=Unlock encrypted bcachefs volume %i
+Before=local-fs-pre.target
+After=systemd-udev-settle.service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/bcachefs-unlock /dev/%i
+RemainAfterExit=yes
+
+[Install]
+WantedBy=local-fs-pre.target

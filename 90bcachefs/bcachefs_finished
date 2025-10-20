@@ -1,0 +1,8 @@
+#!/bin/sh
+# /sbin/bcachefs_finished
+# Called by udev rule when bcachefs devices appear
+
+info "bcachefs device ready: $DEVNAME"
+/usr/bin/bcachefs show-super "$DEVNAME" >/dev/null 2>&1 || true
+
+
